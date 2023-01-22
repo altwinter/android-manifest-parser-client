@@ -1,0 +1,22 @@
+syntax = "proto3";
+
+option csharp_namespace = "GrpcManifestParserClient";
+
+package parse;
+
+service ManifestParser {
+  rpc ParseData (ManifestInfo) returns (ParseReply);
+}
+
+// The request
+message ManifestInfo {
+  string sha1 = 1;
+  string manifestPath = 2;
+  string apkPath = 3;
+}
+
+// The response
+message ParseReply {
+  bool response = 1;
+  string message = 2;
+}
